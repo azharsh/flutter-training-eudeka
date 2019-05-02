@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class PhotoHero extends StatelessWidget {
   const PhotoHero({ Key key, this.photo, this.onTap, this.width, this.heigth , this.tag}) : super(key: key);
 
@@ -23,7 +22,6 @@ class PhotoHero extends StatelessWidget {
             child: Image.network(
               photo,
               fit: BoxFit.contain,
-              
             ),
           ),
         ),

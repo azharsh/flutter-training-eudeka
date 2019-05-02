@@ -4,12 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert'; //json
 import 'package:api/detail.dart';
 import 'package:api/photo.dart';
-import 'package:api/favorite.dart';
-
 
 void main() => runApp(new MyApp());
-
-
 
 // App root class
 class MyApp extends StatelessWidget {
@@ -23,21 +19,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Home page class
 class IngredientsPage extends StatefulWidget {
-
   IngredientsPage({Key key}) : super(key: key);
 
   @override
   _IngredientsPageState createState() => new _IngredientsPageState();
 }
 
-// Home page state class
 class _IngredientsPageState extends State<IngredientsPage> {
-
   List<Ingredients> ingredients = [];
-  // List<FavModel> favlist = <FavModel>[];
-  // final Set<FavModel> _saved = new Set<FavModel>(); 
 
   @override
   void initState() {
@@ -68,48 +58,25 @@ class _IngredientsPageState extends State<IngredientsPage> {
         return getRow(position);
       });
 
-  Widget getRow(int i ) {
-     final Set<FavModel> _saved = new Set<FavModel>();  
-    final bool alreadySaved = _saved.contains(i);
-
-
-    return new Row(
-      
+  Widget getRow(int i) {
+    return new Row(     
       children: <Widget>[
        PhotoHero(
           photo: "${ingredients[i].strCategoryThumb}",
           width: 100.0,
           heigth: 100.0,
-          tag: "${ingredients[i].idCategory}",
-    
+          tag: "${ingredients[i].idCategory}",    
           onTap: () {
               Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => IngredientsDetailPage(ingredients: ingredients[i])
               )
-          );
+           );
           },
         ),
-         Text("${ingredients[i].strCategory}"),
-         GestureDetector(
-           child:  new Icon(  Icons.favorite ,
-        color:  Colors.red ,
-        ),
-        onTap:() {
-               
-               
-          
-          //  if (alreadySaved) {
-          //   _saved.remove(i);
-          // } else {
-          //   _saved.add(model);
-          // }
-
-        },
-         )
+         Text("${ingredients[i].strCategory}")
       ],
-
     );
   }
 
@@ -124,6 +91,5 @@ class _IngredientsPageState extends State<IngredientsPage> {
     } else {
       throw Exception('Failed to load photos');
     }
-
   }
 }

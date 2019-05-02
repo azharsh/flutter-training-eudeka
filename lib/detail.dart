@@ -3,10 +3,9 @@ import 'package:api/Ingredients.dart';
 import 'package:api/photo.dart';
 import 'package:flutter/scheduler.dart';
 
+
 class IngredientsDetailPage extends StatelessWidget {
   Ingredients ingredients;
-
-  // In the constructor, require a Movie
   IngredientsDetailPage({Key key, @required this.ingredients}) : super(key: key);
 
   @override
@@ -16,7 +15,7 @@ class IngredientsDetailPage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Detail Ingredients"),
         ),
-        body: getBody(  context)
+        body: getBody(context)
     );
   }
 
@@ -32,25 +31,22 @@ class IngredientsDetailPage extends StatelessWidget {
         ),
 
         PhotoHero(
-                      photo: '${ingredients.strCategoryThumb}',
-                      width: 100.0,
-                      tag:'${ingredients.idCategory}' ,
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
+          photo: '${ingredients.strCategoryThumb}',
+          width: 100.0,
+          tag:'${ingredients.idCategory}' ,
+          onTap: () {
+          Navigator.of(context).pop();
+          },
+        ),
 
-
-           Container(
+        Container(
           padding: const EdgeInsets.all(32.0),
           child: Text(
             "${ingredients.strCategoryDescription}",
             softWrap: true,
           ),       
         )
-
       ],
     );
   }
-
 }
